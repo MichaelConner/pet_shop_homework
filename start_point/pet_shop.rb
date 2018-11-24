@@ -50,5 +50,21 @@ def remove_pet_by_name(shop, name)
 end
 
 def add_pet_to_stock(shop, pet)
-    shop[:pets].push(pet)
+  return shop[:pets].push(pet)
+end
+
+def customer_cash(customer)
+  return customer[:cash]
+end
+
+def remove_customer_cash(customer, cash)
+  return customer[:cash] -= cash
+end
+
+def customer_pet_count(customer)
+  customer[:pets].length
+end
+
+def add_pet_to_customer(customer, new_pet)
+  customer[:pets] << new_pet
 end
