@@ -75,3 +75,14 @@ def customer_can_afford_pet(customer, new_pet)
   end
   return false
 end
+
+def sell_pet_to_customer(shop, pet, customer)
+  return if pet.nil?
+  if customer[:cash] > pet[:price]
+     customer[:pets] << pet         # this will add the pet to the customer's inventory
+     shop[:pets].delete(pet)        # this will remove the pet form the shop's inventory
+     customer[:cash] -= pet[:price]           # this will update the customer's cash total
+     shop[:admin][:total_cash] += pet[:price] # this will update the shop's cash total
+     shop[:admin][:pets_sold] += 1  # this will update the total number of pet's sold
+  end
+end
